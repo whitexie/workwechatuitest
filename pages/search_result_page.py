@@ -69,8 +69,19 @@ class UserEditPage(BasePage):
     def edit_title(self, title):
         self.send_content(self._title, title)
 
+    _EDIT_DICT = {
+        'name': edit_name,
+        'en_name': edit_en_name,
+        'phone': edit_phone,
+        'telephone': edit_telephone,
+        'email': edit_email,
+        'address': edit_address,
+        'title': edit_title
+    }
+
     def edit_user_info(self, name=None, en_name=None, phone=None,
                        telephone=None, email=None, address=None, title=None):
+        # todo 是否可以优化
         """
 
         :param name:
@@ -82,20 +93,34 @@ class UserEditPage(BasePage):
         :param title:
         :return:
         """
-        if name:
-            self.edit_name(name)
-        if en_name:
-            self.edit_en_name(en_name)
-        if phone:
-            self.edit_phone(phone)
-        if telephone:
-            self.edit_telephone(telephone)
-        if email:
-            self.edit_email(email)
-        if address:
-            self.edit_address(address)
-        if title:
-            self.edit_title(title)
+        edit_dict = {
+            'name': name,
+            'en_name': en_name,
+            'phone': phone,
+            'telephone': telephone,
+            'email': email,
+            'address': address,
+            'title': title
+        }
+
+        for key, value in edit_dict.items():
+            if value:
+                self._EDIT_DICT[key](self, value)
+
+        # if name:
+        #     self.edit_name(name)
+        # if en_name:
+        #     self.edit_en_name(en_name)
+        # if phone:
+        #     self.edit_phone(phone)
+        # if telephone:
+        #     self.edit_telephone(telephone)
+        # if email:
+        #     self.edit_email(email)
+        # if address:
+        #     self.edit_address(address)
+        # if title:
+        #     self.edit_title(title)
 
         self.click(self._save)
 

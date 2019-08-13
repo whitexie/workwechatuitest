@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from pages.basepage import BasePage
+from pages.search_result_page import SearchResultPage
 
 
 class ContactPage(BasePage):
@@ -13,6 +14,7 @@ class ContactPage(BasePage):
 
     def search_user_by_name(self, name):
         self.send_content(self._search_user, name)
+        return SearchResultPage(self._driver)
 
     @property
     def save_status(self):
