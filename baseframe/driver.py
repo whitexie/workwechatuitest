@@ -29,3 +29,9 @@ class Driver:
 
     def execute_script(self, script, *args):
         return self._driver.execute_script(script, *args)
+
+    def add_cookie(self, cookie_dict):
+        self._driver.add_cookie(cookie_dict)
+
+    def refresh(self):
+        self._driver.refresh()

@@ -24,5 +24,6 @@ class BasePage:
         el.send_keys(content)
 
     def find(self, locator):
+        # todo 需要改造
         el: WebElement = WebDriverWait(self._driver._driver, 5).until(expected_conditions.visibility_of_element_located(locator))
         return el
