@@ -50,24 +50,31 @@ class UserEditPage(BasePage):
 
     def edit_name(self, name):
         self.send_content(self._username, name)
+        return self
 
     def edit_en_name(self, en_name):
         self.send_content(self._english_name, en_name)
+        return self
 
     def edit_phone(self, phone):
         self.send_content(self._phone, phone)
+        return self
 
     def edit_telephone(self, telephone):
         self.send_content(self._telephone, telephone)
+        return self
 
     def edit_email(self, email):
         self.send_content(self._email, email)
+        return self
 
     def edit_address(self, address):
         self.send_content(self._address, address)
+        return self
 
     def edit_title(self, title):
         self.send_content(self._title, title)
+        return self
 
     _EDIT_DICT = {
         'name': edit_name,
