@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from pages.basepage import BasePage
 from pages.search_result_page import SearchResultPage
+from pages.add_user import UserAddPage
 
 
 class ContactPage(BasePage):
@@ -11,6 +12,7 @@ class ContactPage(BasePage):
 
     def go_to_add_user(self):
         self.click(self._add_user, by_js=True)
+        return UserAddPage(self._driver)
 
     def search_user_by_name(self, name):
         self.send_content(self._search_user, name)
