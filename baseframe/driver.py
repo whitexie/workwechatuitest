@@ -2,6 +2,9 @@ from selenium import webdriver
 
 
 class Driver:
+    """
+    对WebDriver的封装类
+    """
 
     def __init__(self, url, wait_time=10, debugger_address=None):
         if debugger_address is None:

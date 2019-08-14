@@ -1,6 +1,5 @@
-
+import allure
 import time
-
 from baseframe.driver import Driver
 from pages.contact_page import ContactPage
 
@@ -21,6 +20,9 @@ class TestUserEditPage:
         time.sleep(5)
         self.driver.quit()
 
+    @allure.title('验证修改姓名成功')
     def test_001(self):
-        ContactPage(self.driver).search_user_by_name('testerhome') \
-            .go_to_edit_user().edit_name('testerhome是我')
+        edit_result = ContactPage(self.driver).search_user_by_name('testerhome') \
+            .go_to_edit_user().edit_name('testerhome是我') \
+            .save_edit().edit_status
+        assert edit_result is True

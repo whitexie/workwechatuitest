@@ -31,6 +31,10 @@ class SearchResultPage(BasePage):
         self.click(self._edit_user)
         return UserEditPage(self._driver)
 
+    @property
+    def edit_status(self):
+        return self.find(self._edit_status).is_displayed()
+
 
 class UserEditPage(BasePage):
 
@@ -75,6 +79,10 @@ class UserEditPage(BasePage):
     def edit_title(self, title):
         self.send_content(self._title, title)
         return self
+
+    def save_edit(self):
+        self.click(self._save)
+        return SearchResultPage(self._driver)
 
     _EDIT_DICT = {
         'name': edit_name,
@@ -129,6 +137,5 @@ class UserEditPage(BasePage):
         # if title:
         #     self.edit_title(title)
 
-        self.click(self._save)
+        return self.save_edit()
 
-        return SearchResultPage(self._driver)
