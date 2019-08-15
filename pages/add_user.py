@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-
 from pages.basepage import BasePage
 from pages import contact_page
 
