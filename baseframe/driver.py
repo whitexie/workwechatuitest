@@ -1,4 +1,6 @@
 from selenium import webdriver
+# from selenium.webdriver.support import expected_conditions
+# from selenium.webdriver.support.wait import WebDriverWait
 
 
 class Driver:
@@ -21,6 +23,7 @@ class Driver:
 
     def find_element(self, locator):
         # todo 改造查找元素方法
+        # return WebDriverWait(self._driver, 5).until(expected_conditions.visibility_of_element_located(locator))
         return self._driver.find_element(*locator)
 
     @property

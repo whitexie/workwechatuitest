@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from pages.basepage import BasePage
 from pages.search_result_page import SearchResultPage
 from pages.add_user import UserAddPage
-import time
+
 
 class ContactPage(BasePage):
 
