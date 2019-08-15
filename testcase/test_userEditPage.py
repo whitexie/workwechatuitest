@@ -34,3 +34,13 @@ class TestUserEditPage:
     def test_02(self):
         top_user = ContactPage(self.driver).search_user_by_name('te12121st123').top_user().get_tips()
         assert top_user == '置顶成功'
+
+    @allure.title('验证禁用员工成功')
+    def test_03(self):
+        tips = ContactPage(self.driver).search_user_by_name('t22est').disable_user().get_tips()
+        assert tips == '禁用成功'
+
+    @allure.title('验证启用员工成功')
+    def test_04(self):
+        tips = ContactPage(self.driver).search_user_by_name('t22est').enable_user().get_tips()
+        assert tips == '启用成功'

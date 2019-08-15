@@ -9,6 +9,10 @@ class SearchResultPage(BasePage):
     _edit_user = (By.CSS_SELECTOR, 'a.qui_btn.ww_btn.js_edit')
     _move_top = (By.CSS_SELECTOR, 'a.qui_btn.ww_btn.js_move_top')
     _disable = (By.CSS_SELECTOR, 'a.qui_btn.ww_btn.js_disable')
+
+    _disable_verify = (By.CSS_SELECTOR, 'a.qui_btn.ww_btn.ww_btn_Blue[d_ck="submit"]')
+    _disable_cancel = (By.CSS_SELECTOR, 'a[d_ck="cancel"]')
+
     _disable_status = (By.CSS_SELECTOR, 'span.member_display_cover_detail_forbidden.js_disable_tip')
     _js_tips = (By.ID, 'js_tips')
 
@@ -20,12 +24,12 @@ class SearchResultPage(BasePage):
         self.find(self._disable_status).is_displayed()
 
     def disable_user(self):
-        if self.get_disable_status:
-            self.click(self._disable)
+        self.click(self._disable).click(self._disable_verify)
+        return self
 
     def enable_user(self):
-        if not self.get_disable_status:
-            self.click(self._disable)
+        self.click(self._disable)
+        return self
 
     def go_to_edit_user(self):
         self.click(self._edit_user)
@@ -35,9 +39,9 @@ class SearchResultPage(BasePage):
         el = self.find(self._move_top)
         if el.text == '置顶':
             el.click()
+            return self
         else:
             raise Exception('该用户不可置顶,text={}'.format(el.text))
-        return self
 
     def get_tips(self):
         return self.find(self._js_tips).text
