@@ -10,7 +10,7 @@ class SearchResultPage(BasePage):
     _move_top = (By.CSS_SELECTOR, 'a.qui_btn.ww_btn.js_move_top')
     _disable = (By.CSS_SELECTOR, 'a.qui_btn.ww_btn.js_disable')
     _disable_status = (By.CSS_SELECTOR, 'span.member_display_cover_detail_forbidden.js_disable_tip')
-    _edit_status = (By.ID, 'js_tips')
+    _js_tips = (By.ID, 'js_tips')
 
     def __init__(self, driver):
         BasePage.__init__(self, driver)
@@ -31,9 +31,16 @@ class SearchResultPage(BasePage):
         self.click(self._edit_user)
         return UserEditPage(self._driver)
 
-    @property
-    def edit_status(self):
-        return self.find(self._edit_status).is_displayed()
+    def top_user(self):
+        el = self.find(self._move_top)
+        if el.text == '置顶':
+            el.click()
+        else:
+            raise Exception('该用户不可置顶,text={}'.format(el.text))
+        return self
+
+    def get_tips(self):
+        return self.find(self._js_tips).text
 
 
 class UserEditPage(BasePage):

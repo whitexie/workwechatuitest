@@ -20,9 +20,17 @@ class TestUserEditPage:
         time.sleep(5)
         self.driver.quit()
 
+    def teardown_method(self):
+        self.driver.refresh()
+
     @allure.title('验证修改姓名成功')
     def test_001(self):
         edit_result = ContactPage(self.driver).search_user_by_name('testerhome') \
             .go_to_edit_user().edit_name('testerhome是我') \
-            .save_edit().edit_status
-        assert edit_result is True
+            .save_edit().get_tips()
+        assert edit_result == '保存成功'
+
+    @allure.title('验证置顶成功')
+    def test_02(self):
+        top_user = ContactPage(self.driver).search_user_by_name('te12121st123').top_user().get_tips()
+        assert top_user == '置顶成功'
