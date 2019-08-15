@@ -1,5 +1,8 @@
 import allure
 import time
+
+import pytest
+
 from baseframe.driver import Driver
 from pages.contact_page import ContactPage
 
@@ -11,7 +14,7 @@ class TestUserEditPage:
         self.driver = Driver(self.url)
         cookie = {
             'name': 'wwrtx.sid',
-            'value': 'A6uLNE3Z_haX8xdtqr5jDWBo4B6UCy4equm04cfN5haxaRT_W2wu0glm53M78yU-'
+            'value': 'A6uLNE3Z_haX8xdtqr5jDZGAUPvGSA0FAtZcqDq0u469SCIn8hUGpRm75S6J18tR'
         }
         self.driver.add_cookie(cookie)
         self.driver.refresh()
@@ -35,12 +38,14 @@ class TestUserEditPage:
         top_user = ContactPage(self.driver).search_user_by_name('te12121st123').top_user().get_tips()
         assert top_user == '置顶成功'
 
-    @allure.title('验证禁用员工成功')
-    def test_03(self):
-        tips = ContactPage(self.driver).search_user_by_name('t22est').disable_user().get_tips()
+    @allure.title('验证禁用员工成功-{}')
+    @pytest.mark.parametrize('name', [('tester1565852805',), ('testerhome750960',)])
+    def test_03(self, name):
+        tips = ContactPage(self.driver).search_user_by_name(name).disable_user().get_tips()
         assert tips == '禁用成功'
 
-    @allure.title('验证启用员工成功')
-    def test_04(self):
-        tips = ContactPage(self.driver).search_user_by_name('t22est').enable_user().get_tips()
+    @allure.title('验证启用员工成功-{}')
+    @pytest.mark.parametrize('name', [('tester1565852805',), ('testerhome750960',)])
+    def test_04(self, name):
+        tips = ContactPage(self.driver).search_user_by_name(name).enable_user().get_tips()
         assert tips == '启用成功'

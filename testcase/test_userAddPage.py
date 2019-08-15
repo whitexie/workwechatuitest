@@ -11,7 +11,7 @@ class TestUserAddPage:
         self.driver = Driver(self.url)
         cookie = {
             'name': 'wwrtx.sid',
-            'value': 'A6uLNE3Z_haX8xdtqr5jDWBo4B6UCy4equm04cfN5haxaRT_W2wu0glm53M78yU-'
+            'value': 'A6uLNE3Z_haX8xdtqr5jDZGAUPvGSA0FAtZcqDq0u469SCIn8hUGpRm75S6J18tR'
         }
         self.driver.add_cookie(cookie)
         self.driver.refresh()
