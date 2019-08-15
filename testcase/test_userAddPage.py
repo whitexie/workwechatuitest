@@ -1,4 +1,5 @@
 from baseframe.driver import Driver
+import time
 from pages.contact_page import ContactPage
 import allure
 
@@ -18,8 +19,9 @@ class TestUserAddPage:
 
     @allure.title('验证新增用户成功')
     def test_add_user(self):
+        name = 'tester{}'.format(str(time.time()).split('.')[0])
         save_status = ContactPage(self.driver) \
             .go_to_add_user() \
-            .add_user('te12121st123', 'test1212444', 'tes12321312t222@qq.com').save_status
+            .add_user(name, name, '{}@qq.com'.format(name)).save_status
         assert save_status is True
 
