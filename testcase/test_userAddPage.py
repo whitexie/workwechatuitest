@@ -8,7 +8,13 @@ class TestUserAddPage:
 
     def setup_class(self):
         self.url = 'https://work.weixin.qq.com/wework_admin/frame#contacts'
-        self.driver = Driver(self.url, debugger_address='127.0.0.1:9222')
+        self.driver = Driver(self.url)
+        cookie = {
+            'name': 'wwrtx.sid',
+            'value': 'A6uLNE3Z_haX8xdtqr5jDWBo4B6UCy4equm04cfN5haxaRT_W2wu0glm53M78yU-'
+        }
+        self.driver.add_cookie(cookie)
+        self.driver.refresh()
 
     def teardown_class(self):
         self.driver.quit()
