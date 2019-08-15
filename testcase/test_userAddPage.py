@@ -25,9 +25,9 @@ class TestUserAddPage:
 
     @allure.title('验证新增用户成功')
     def test_add_user(self):
+        time.sleep(2)
         name = 'tester{}'.format(str(time.time()).split('.')[0])
         save_status = ContactPage(self.driver) \
             .go_to_add_user() \
             .add_user(name, name, '{}@qq.com'.format(name)).save_status
         assert save_status is True
-
