@@ -1,17 +1,17 @@
 from appium import webdriver
+from appium.webdriver.webdriver import WebDriver
 
 
-class Driver:
-    __instance = None
+def get_driver() -> WebDriver:
 
-    def __init__(self):
-        caps = {
-            'platformName': 'Android',
-            'platformVersion': '8.0.0',
-            'deviceName': 'DLQ0215C13000724',
-            'appPackage': 'com.xueqiu.android',
-            'appActivity': '.view.WelcomeActivityAlias',
-            'autoGrantPermissions': True
-        }
-        self._driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_capabilities=caps)
-        self._driver.implicitly_wait(15)
+    caps = {
+        'platformName': 'Android',
+        'platformVersion': '8.1.0',
+        'deviceName': '1d8ce5e',
+        'appPackage': 'com.xueqiu.android',
+        'appActivity': '.view.WelcomeActivityAlias',
+        'autoGrantPermissions': True
+    }
+    driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_capabilities=caps)
+    driver.implicitly_wait(15)
+    return driver
