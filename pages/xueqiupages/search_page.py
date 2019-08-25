@@ -1,4 +1,3 @@
-import time
 
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.common.by import By
@@ -26,7 +25,6 @@ class SearchPage:
         el = self.driver.find_element(*self._search_input)
         el.send_keys(content)
         self.driver.press_keycode(67)
-        time.sleep(5)
         elements = self.driver.find_elements(*self._name)
         elements[0].click()
         return self
