@@ -27,3 +27,8 @@ class MainPage:
         self.driver.find_element(*self._optional).click()
         from pages.xueqiupages.optional_page import OptionalPage
         return OptionalPage(self.driver)
+
+    def goto_search(self):
+        self.driver.find_element(*self._search).click()
+        from pages.xueqiupages.search_page import SearchPage
+        return SearchPage(self.driver)

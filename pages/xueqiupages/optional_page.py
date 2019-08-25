@@ -40,5 +40,5 @@ class OptionalPage:
                 self.driver.find_element(*self._delete).click()
                 break
             else:
-                raise Exception('该股票不存在')
+                raise Exception('该自选股不存在')
         return self
