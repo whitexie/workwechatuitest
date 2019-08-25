@@ -17,11 +17,11 @@ class OptionalPage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
-        self.driver.find_element(*self._snb)
-        size = self.driver.get_window_size()
-        x = int(size['width'] * 0.5)
-        y = int(size['height'] * 0.5)
-        self.driver.tap([(x, y), (x + 10, y + 10)])
+        # 取消浮层
+        if self.driver.find_element(*self._snb):
+            size = self.driver.get_window_size()
+            x, y = size.values()
+            TouchAction(driver).press(x=x * 0.5, y=y * 0.5).release().perform()
 
     def goto_search(self):
 
