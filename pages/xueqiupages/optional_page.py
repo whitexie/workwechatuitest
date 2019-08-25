@@ -7,6 +7,7 @@ class OptionalPage:
     _snb = (By.ID, 'snb_tip_wrapper')
 
     _search = (By.ID, 'action_search')
+    _main = (By.ID, '//*[contains(@text, "雪球") and contains(@resource-id, "tab_name")]')
     _optionals_content = (By.ID, 'content_recycler')
     _optionals = (By.ID, 'row_layout')
     _stock_name = (By.ID, 'portfolio_stockName')
@@ -28,6 +29,11 @@ class OptionalPage:
         self.driver.find_element(*self._search).click()
         from pages.xueqiupages.search_page import SearchPage
         return SearchPage(self.driver)
+
+    def goto_main_page(self):
+        self.driver.find_element(*self._main).click()
+        from pages.xueqiupages.main_page import MainPage
+        return MainPage(self.driver)
 
     def get_optionals(self):
         return self.driver.find_elements(*self._optionals)

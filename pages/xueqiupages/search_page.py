@@ -22,12 +22,23 @@ class SearchPage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
-    def canal_search(self):
+    def _canal_search(self):
         """
         退出搜索页面，返回上一页
         :return:
         """
         self.driver.find_element(*self._close_search).click()
+        return self
+
+    def back_to_main_page(self):
+        self._canal_search()
+        from pages.xueqiupages.main_page import MainPage
+        return MainPage(self.driver)
+
+    def back_to_optional_page(self):
+        self._canal_search()
+        from pages.xueqiupages.optional_page import OptionalPage
+        return OptionalPage(self.driver)
 
     def search_stock(self, content):
         el = self.driver.find_element(*self._search_input)
