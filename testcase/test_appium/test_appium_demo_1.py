@@ -25,9 +25,9 @@ class TestXueQiu:
                 break
 
     def setup_method(self):
-        caps = {'platformName': 'Android', 'deviceName': '1d8ce5e', 'appPackage': 'com.xueqiu.android',
+        caps = {'platformName': 'Android', 'deviceName': 'TKCQWGWCJNVGCQJV', 'appPackage': 'com.xueqiu.android',
                 'appActivity': '.view.WelcomeActivityAlias', 'autoGrantPermissions': True}
-        self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', caps)
+        self.driver = webdriver.Remote('http://arewbn.natappfree.cc/wd/hub', caps)
         self.driver.implicitly_wait(15)
 
     def teardown_method(self):
