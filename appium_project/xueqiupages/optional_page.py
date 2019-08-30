@@ -1,9 +1,10 @@
 from appium.webdriver.common.touch_action import TouchAction
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.common.by import By
+from appium_project.xueqiupages.base_page import BasePage
 
 
-class OptionalPage:
+class OptionalPage(BasePage):
     _snb = (By.ID, 'snb_tip_wrapper')
 
     _search = (By.ID, 'action_search')
@@ -16,7 +17,7 @@ class OptionalPage:
     _move_top = (By.XPATH, '//*[@text="置顶"]')
 
     def __init__(self, driver: WebDriver):
-        self.driver = driver
+        super(OptionalPage, self).__init__(driver)
 
         # 取消浮层
         if self.driver.find_element(*self._snb):

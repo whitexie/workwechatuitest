@@ -2,8 +2,10 @@
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 
+from appium_project.xueqiupages.base_page import BasePage
 
-class SearchPage:
+
+class SearchPage(BasePage):
     _search_input = (By.ID, 'search_input_text')
     _name = (By.ID, 'name')
     _search_prompt = (By.ID, 'fl_suggest')
@@ -20,7 +22,7 @@ class SearchPage:
     _md = (By.ID, 'md_buttonDefaultNegative')
 
     def __init__(self, driver: WebDriver):
-        self.driver = driver
+        super(SearchPage, self).__init__(driver)
 
     def _canal_search(self):
         """
