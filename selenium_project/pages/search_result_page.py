@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from pages.basepage import BasePage
+from selenium_project.pages import BasePage
 
 
 class SearchResultPage(BasePage):

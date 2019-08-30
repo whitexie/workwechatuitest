@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from pages.basepage import BasePage
+from selenium_project.pages import BasePage
 
 
 class UserAddPage(BasePage):
@@ -13,5 +13,5 @@ class UserAddPage(BasePage):
         self.send_content(self._account_id, account)
         self.send_content(self._email, email)
         self.click(self._save_btn)
-        from pages.contact_page import ContactPage
+        from selenium_project.pages.contact_page import ContactPage
         return ContactPage(self._driver)

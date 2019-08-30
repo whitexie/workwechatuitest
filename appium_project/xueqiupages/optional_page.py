@@ -27,12 +27,12 @@ class OptionalPage:
     def goto_search(self):
 
         self.driver.find_element(*self._search).click()
-        from pages.xueqiupages.search_page import SearchPage
+        from appium_project.xueqiupages.search_page import SearchPage
         return SearchPage(self.driver)
 
     def goto_main_page(self):
         self.driver.find_element(*self._main).click()
-        from pages.xueqiupages.main_page import MainPage
+        from appium_project.xueqiupages.main_page import MainPage
         return MainPage(self.driver)
 
     def get_optionals(self):

@@ -3,8 +3,8 @@ import time
 
 import pytest
 
-from baseframe.driver import Driver
-from pages.contact_page import ContactPage
+from appium_project.baseframe import Driver
+from selenium_project.pages.contact_page import ContactPage
 
 
 class TestUserEditPage:

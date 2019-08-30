@@ -1,7 +1,7 @@
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from baseframe.driver import Driver
+from appium_project.baseframe import Driver
 
 
 class BasePage:

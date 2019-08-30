@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
-from pages.basepage import BasePage
-from pages.search_result_page import SearchResultPage
-from pages.add_user import UserAddPage
+from selenium_project.pages import BasePage
+from selenium_project.pages.search_result_page import SearchResultPage
+from selenium_project.pages import UserAddPage
 
 
 class ContactPage(BasePage):

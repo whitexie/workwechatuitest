@@ -32,12 +32,12 @@ class SearchPage:
 
     def back_to_main_page(self):
         self._canal_search()
-        from pages.xueqiupages.main_page import MainPage
+        from appium_project.xueqiupages.main_page import MainPage
         return MainPage(self.driver)
 
     def back_to_optional_page(self):
         self._canal_search()
-        from pages.xueqiupages.optional_page import OptionalPage
+        from appium_project.xueqiupages.optional_page import OptionalPage
         return OptionalPage(self.driver)
 
     def search_stock(self, content):

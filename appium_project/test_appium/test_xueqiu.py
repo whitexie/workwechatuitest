@@ -1,9 +1,7 @@
-from appium.webdriver.webdriver import WebDriver
-
-from baseframe.remotedriver import get_driver
+from appium_project.baseframe import get_driver
 import allure
 
-from pages.xueqiupages.main_page import MainPage
+from appium_project.xueqiupages import MainPage
 
 """
     20190818作业

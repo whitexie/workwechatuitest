@@ -1,6 +1,6 @@
-from baseframe.driver import Driver
+from appium_project.baseframe import Driver
 import time
-from pages.contact_page import ContactPage
+from selenium_project.pages.contact_page import ContactPage
 import allure
 
 
