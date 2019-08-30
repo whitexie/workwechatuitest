@@ -10,6 +10,6 @@ def get_driver() -> WebDriver:
     caps['appPackage'] = 'com.xueqiu.android'
     caps['appActivity'] = '.view.WelcomeActivityAlias'
     caps['autoGrantPermissions'] = True
-    driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_capabilities=caps)
+    driver = webdriver.Remote('http://mbjvr8.natappfree.cc/wd/hub', desired_capabilities=caps)
     driver.implicitly_wait(15)
     return driver

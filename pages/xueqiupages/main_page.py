@@ -19,7 +19,7 @@ class MainPage:
         caps['appPackage'] = 'com.xueqiu.android'
         caps['appActivity'] = '.view.WelcomeActivityAlias'
         caps['autoGrantPermissions'] = True
-        self.driver = webdriver.Remote('http://0.0.0.0:4723/wd/hub', desired_capabilities=caps)
+        self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_capabilities=caps)
         self.driver.implicitly_wait(15)
 
     def goto_optional(self):

@@ -17,7 +17,7 @@ from pages.xueqiupages.main_page import MainPage
 class TestXueQiu:
 
     def setup_class(self):
-        pass
+        self.main_page = MainPage(get_driver())
 
     @allure.title('点击自选，添加股票，判断股票添加成功')
     def test_01(self):
