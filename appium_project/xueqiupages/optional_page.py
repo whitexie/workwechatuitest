@@ -20,8 +20,8 @@ class OptionalPage(BasePage):
         super(OptionalPage, self).__init__(driver)
 
         # 取消浮层
-        elements = self.driver.find_element(*self._snb)
-        if elements >= 1:
+        elements = self.driver.find_elements(*self._snb)
+        if len(elements) >= 1:
             size = self.driver.get_window_size()
             x, y = size.values()
             TouchAction(driver).press(x=x * 0.5, y=y * 0.5).release().perform()
