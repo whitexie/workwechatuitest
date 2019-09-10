@@ -15,7 +15,11 @@ from appium_project.xueqiupages.main_page import MainPage
 class TestXueQiu:
 
     def setup_class(self):
-        self.main_page = MainPage(get_driver())
+        config_path = '/Users/xiebo/PycharmProjects/workwechatuitest/appium_project/moblie_phone_config/emulator_27.yml'
+        self.main_page = MainPage(get_driver(config_path))
+
+    def teardown_class(self):
+        self.main_page.driver.quit()
 
     def teardown_method(self):
         self.main_page.driver.close_app()
@@ -30,11 +34,11 @@ class TestXueQiu:
                    .search_stock('alibaba') \
                    .follow_stock_by_index(0) == '已添加'
 
-    @allure.title('搜索已添加的自选股，显示已添加')
-    def test_02(self):
-        assert self.main_page.goto_search().search_stock('alibaba').followed_status() == '已添加'
-
-    @allure.title('删除已经添加的股票，再次搜索股票，股票的按钮变成“加自选”')
-    def test_03(self):
-        assert self.main_page.goto_optional().delete_stock('阿里巴巴').goto_search().search_stock('alibaba') \
-            .follow_status() == '加自选'
+    # @allure.title('搜索已添加的自选股，显示已添加')
+    # def test_02(self):
+    #     assert self.main_page.goto_search().search_stock('alibaba').followed_status() == '已添加'
+    #
+    # @allure.title('删除已经添加的股票，再次搜索股票，股票的按钮变成“加自选”')
+    # def test_03(self):
+    #     assert self.main_page.goto_optional().delete_stock('阿里巴巴').goto_search().search_stock('alibaba') \
+    #         .follow_status() == '加自选'

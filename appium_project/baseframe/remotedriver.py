@@ -9,9 +9,9 @@ def get_driver(config_path) -> WebDriver:
     caps['appPackage'] = 'com.xueqiu.android'
     caps['appActivity'] = '.view.WelcomeActivityAlias'
     caps['autoGrantPermissions'] = True
-    with open(config_path, 'r') as data:
+    with open(config_path, 'r', encoding='utf-8') as data:
         caps.update(yaml.load(data))
     print(caps)
     driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_capabilities=caps)
-    driver.implicitly_wait(15)
+    driver.implicitly_wait(5)
     return driver

@@ -5,8 +5,8 @@ from appium_project.xueqiupages.base_page import BasePage
 
 
 class OptionalPage(BasePage):
-    _snb = (By.ID, 'snb_tip_wrapper')
 
+    _snb = (By.ID, 'snb_tip_text')
     _search = (By.ID, 'action_search')
     _main = (By.ID, '//*[contains(@text, "雪球") and contains(@resource-id, "tab_name")]')
     _optionals_content = (By.ID, 'content_recycler')
@@ -20,7 +20,8 @@ class OptionalPage(BasePage):
         super(OptionalPage, self).__init__(driver)
 
         # 取消浮层
-        if self.driver.find_element(*self._snb):
+        elements = self.driver.find_element(*self._snb)
+        if elements >= 1:
             size = self.driver.get_window_size()
             x, y = size.values()
             TouchAction(driver).press(x=x * 0.5, y=y * 0.5).release().perform()
