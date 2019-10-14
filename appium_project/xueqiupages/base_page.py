@@ -24,6 +24,7 @@ class BasePage:
         try:
             return self.driver.find_element(*locator)
         except Exception as e:
+            print(self.driver.current_activity)
             if BasePage.max > 3:
                 raise e
 
@@ -31,4 +32,5 @@ class BasePage:
                 elements = self.driver.find_elements(*black)
                 if len(elements) >= 1:
                     elements[0].click()
+            BasePage.max = BasePage.max + 1
             return self.find(locator)

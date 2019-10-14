@@ -15,7 +15,7 @@ from appium_project.xueqiupages.main_page import MainPage
 class TestXueQiu:
 
     def setup_class(self):
-        config_path = '/Users/xiebo/PycharmProjects/workwechatuitest/appium_project/moblie_phone_config/emulator_27.yml'
+        config_path = 'C:\\Users\\Ysansan\\PycharmProjects\\workwechatuitest\\appium_project\\moblie_phone_config\\huawei_26.yml'
         self.main_page = MainPage(get_driver(config_path))
 
     def teardown_class(self):

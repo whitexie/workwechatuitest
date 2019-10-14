@@ -28,7 +28,7 @@ class OptionalPage(BasePage):
 
     def goto_search(self):
 
-        self.driver.find_element(*self._search).click()
+        self.find(self._search).click()
         from appium_project.xueqiupages.search_page import SearchPage
         return SearchPage(self.driver)
 
