@@ -3,8 +3,8 @@ import requests
 
 class TestWorkWechat:
     url = 'https://qyapi.weixin.qq.com'
-    corpid = 'ww33643a02c10ca566'
-    corpsecret = 'praUqju6ZdkbWg0M39SFXdWm7xcK-9SPr5dGJkQVNQI'
+    corp_id = 'ww33643a02c10ca566'
+    corp_secret = 'praUqju6ZdkbWg0M39SFXdWm7xcK-9SPr5dGJkQVNQI'
 
     def get_url_format(self, path=None):
         return self.url + path
@@ -12,8 +12,8 @@ class TestWorkWechat:
     def test_get_token(self):
         url = self.get_url_format('/cgi-bin/gettoken')
         params = {
-            'corpid': self.corpid,
-            'corpsecret': self.corpsecret
+            'corpid': self.corp_id,
+            'corpsecret': self.corp_secret
         }
         rep = requests.get(url, params=params)
         rep_json = rep.json()
