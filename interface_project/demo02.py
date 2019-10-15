@@ -18,7 +18,7 @@ class TestWorkWechat:
         rep = requests.get(url, params=params)
         rep_json = rep.json()
         assert 'ok' == rep_json['errmsg']
-        assert rep_json['access_token'] != None
+        assert rep_json['access_token'] is not None
         TestWorkWechat.access_token = rep_json['access_token']
 
     def test_get_department_list(self):
