@@ -23,9 +23,10 @@ class BaseApi:
             self._contacts_token = token
             return token
 
-    def post(self, uri, json_object):
+    def post(self, uri, json_object, **kwargs):
         url = self._base_url+uri
-        return Request.request('post', url, params={'access_token': self.get_token()}, json=json_object).json()
+        params = {'access_token': self.get_token()}
+        return Request.request('post', url, params=params, json=json_object, **kwargs).json()
 
     def get(self, uri, params):
         url = self._base_url+uri
