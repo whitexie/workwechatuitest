@@ -15,6 +15,7 @@ class Utils:
 
     @classmethod
     def print_http(cls, rep):
+
         # 请求报文
         allure.attach(rep.request.url, 'req_url', allure.attachment_type.URI_LIST)
         allure.attach(cls.format_json(rep.request.headers), 'req_headers', allure.attachment_type.JSON)
