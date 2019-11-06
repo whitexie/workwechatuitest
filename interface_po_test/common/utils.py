@@ -5,7 +5,10 @@ class Utils:
 
     @classmethod
     def dict_to_json(cls, dict_obj):
-        return json.dumps(dict_obj, ensure_ascii=False, indent=2)
+        try:
+            return json.dumps(dict(dict_obj), ensure_ascii=False, indent=2)
+        except Exception:
+            return str(dict_obj)
 
 
 if __name__ == '__main__':
