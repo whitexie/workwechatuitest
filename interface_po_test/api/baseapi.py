@@ -1,4 +1,5 @@
 import os
+import allure
 from interface_po_test.common.request import Request
 
 
@@ -9,18 +10,21 @@ class BaseApi:
 
     _get_token_path = '/cgi-bin/gettoken'
 
+    @allure.step('获取token')
+    def _get_access_token(self):
+        url = self._base_url + self._get_token_path
+        params = {
+            'corpid': self._corpid,
+            'corpsecret': self._contacts_secret
+        }
+        r = Request.request('get', url, params=params).json()
+        return r['access_token']
+
     def get_token(self):
-        # if self._contacts_token:
         if os.environ.get('access_token'):
-            return self._contacts_token
+            return os.environ.get('access_token')
         else:
-            url = self._base_url + self._get_token_path
-            params = {
-                'corpid': self._corpid,
-                'corpsecret': self._contacts_secret
-            }
-            r = Request.request('get', url, params=params).json()
-            token = r['access_token']
+            token = self._get_access_token()
             os.environ['access_token'] = token
             return token
 
