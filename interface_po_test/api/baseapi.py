@@ -1,3 +1,4 @@
+import os
 from interface_po_test.common.request import Request
 
 
@@ -7,10 +8,10 @@ class BaseApi:
     _contacts_secret = 'HucYaAh4kQcxINjCJ-CU8oswIlN-bGUEpr2ULJQULEw'
 
     _get_token_path = '/cgi-bin/gettoken'
-    _contacts_token = None
 
     def get_token(self):
-        if self._contacts_token:
+        # if self._contacts_token:
+        if os.environ.get('access_token'):
             return self._contacts_token
         else:
             url = self._base_url + self._get_token_path
@@ -20,7 +21,7 @@ class BaseApi:
             }
             r = Request.request('get', url, params=params).json()
             token = r['access_token']
-            self._contacts_token = token
+            os.environ['access_token'] = token
             return token
 
     def post(self, uri, json_object, **kwargs):
@@ -33,3 +34,9 @@ class BaseApi:
         param = {'access_token': self.get_token()}
         param.update(params)
         return Request.request('get', url, params=param).json()
+
+
+if __name__ == '__main__':
+    api = BaseApi()
+    print(api.get_token())
+    print(api.get_token())
