@@ -1,5 +1,6 @@
-import requests
 import allure
+import requests
+from interface_po_test.common.utils import Utils
 
 
 class Request:
@@ -11,6 +12,8 @@ class Request:
             "https": "http://127.0.0.1:8888",
         }
         r = requests.request(method, url, proxies=proxies, verify=False, **kwargs)
+        allure.attach(r.request.url, 'req_url', allure.attachment_type.TEXT)
+        allure.attach(Utils.dict_to_json(dict(r.request.headers)), 'req_headers', allure.attachment_type.TEXT)
         return r
 
 
@@ -18,7 +21,7 @@ if __name__ == '__main__':
     url = 'https://www.baidu.com'
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) '
-                      'Chrome/70.0.3538.67 Safari/537.36 '
+                      'Chrome/70.0.3538.67 Safari/537.36'
     }
     r = requests.get(url, headers=headers)
     print(r.request.__dict__)
