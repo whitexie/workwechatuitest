@@ -1,19 +1,29 @@
 import json
 
+import allure
+from requests.structures import CaseInsensitiveDict
+
 
 class Utils:
 
     @classmethod
-    def dict_to_json(cls, dict_obj):
-        if isinstance(dict_obj, bytes):
-            return json.dumps(str(dict_obj, encoding='utf-8'), ensure_ascii=False, indent=2)
-        elif isinstance(dict_obj, dict):
-            return json.dumps(dict_obj, ensure_ascii=False, indent=2)
-        else:
-            return str(dict_obj)
+    def format_json(cls, object_json):
+        if isinstance(object_json, CaseInsensitiveDict):
+            return json.dumps(dict(object_json), ensure_ascii=False, indent=2)
+        elif isinstance(object_json, dict):
+            return json.dumps(object_json, ensure_ascii=False, indent=2)
 
+    @classmethod
+    def print_http(cls, rep):
+        # 请求报文
+        allure.attach(rep.request.url, 'req_url', allure.attachment_type.URI_LIST)
+        allure.attach(cls.format_json(rep.request.headers), 'req_headers', allure.attachment_type.JSON)
+        if rep.request.body:
+            body = str(rep.request.body, encoding='utf-8')
+            allure.attach(body, 'req_body', allure.attachment_type.JSON)
 
-if __name__ == '__main__':
-    dict_object = {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*',
-                   'Connection': 'keep-alive'}
-    print(Utils.dict_to_json(dict_object))
+        # 响应报文
+        allure.attach(str(rep.status_code), 'status_code', allure.attachment_type.TEXT)
+        allure.attach(cls.format_json(rep.headers), 'rep_hreaders', allure.attachment_type.JSON)
+        if rep.headers['Content-Type'].find('json'):
+            allure.attach(cls.format_json(rep.json()), 'rep_body', allure.attachment_type.JSON)

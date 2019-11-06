@@ -12,18 +12,7 @@ class Request:
             "https": "http://127.0.0.1:8888",
         }
         rep = requests.request(method, url, proxies=proxies, verify=False, **kwargs)
-
-        # 请求报文
-        allure.attach(rep.request.url, 'req_url', allure.attachment_type.URI_LIST)
-        allure.attach(Utils.dict_to_json(rep.request.headers), 'req_headers', allure.attachment_type.JSON)
-        allure.attach(Utils.dict_to_json(rep.request.body), 'req_body', allure.attachment_type.JSON)
-
-        # 响应报文
-        allure.attach(str(rep.status_code), 'status_code', allure.attachment_type.TEXT)
-        allure.attach(Utils.dict_to_json(rep.headers), 'rep_hreaders', allure.attachment_type.JSON)
-        if rep.headers['Content-Type'].find('json'):
-            allure.attach(Utils.dict_to_json(rep.json()), 'rep_body', allure.attachment_type.JSON)
-
+        Utils.print_http(rep)   # 输出allure报告
         return rep
 
 
