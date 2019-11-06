@@ -5,9 +5,11 @@ class Utils:
 
     @classmethod
     def dict_to_json(cls, dict_obj):
-        try:
-            return json.dumps(dict(dict_obj), ensure_ascii=False, indent=2)
-        except Exception:
+        if isinstance(dict_obj, bytes):
+            return json.dumps(str(dict_obj, encoding='utf-8'), ensure_ascii=False, indent=2)
+        elif isinstance(dict_obj, dict):
+            return json.dumps(dict_obj, ensure_ascii=False, indent=2)
+        else:
             return str(dict_obj)
 
 
