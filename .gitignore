@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 ./demo.py
 
+requirements.txt
+
 # C extensions
 *.so
 
