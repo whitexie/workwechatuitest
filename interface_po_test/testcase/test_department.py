@@ -31,3 +31,12 @@ class TestDepartment:
         r = self.depart.create(name)
         depart_id = r['id']
         assert self.depart.delete(depart_id)['errcode'] == 0
+
+    @allure.title('更新部门')
+    def test_update(self):
+        department = self.depart.search_list()['department'][1]
+        id = department['id']
+        name = department['name']
+        assert self.depart.update(id, name=name+'1')['errcode'] == 0
+        assert self.depart.search_list(id)['department'][0]['name'] == name+'1'
+
