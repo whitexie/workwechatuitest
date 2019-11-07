@@ -27,6 +27,7 @@ class TestDepartment:
 
     @allure.title('删除部门')
     def test_delete(self):
-        depart_id = 2
-        r = self.depart.delete(depart_id)
-        assert r['errcode'] == 0
+        name = '子部门%d%d' % (int(time.time()), random.randint(10000, 99999))
+        r = self.depart.create(name)
+        depart_id = r['id']
+        assert self.depart.delete(depart_id)['errcode'] == 0
