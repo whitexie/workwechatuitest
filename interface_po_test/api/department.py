@@ -10,30 +10,23 @@ class Department(BaseApi):
 
     @allure.step('创建部门')
     def create(self, name, parentid=1, order=1000, id=None):
-        headers = {
-            'Content-Type': 'application/json; charset=utf-8'
-        }
         json_object = {
             'name': name,
             'parentid': parentid,
             'order': order,
             'id': id
         }
-        return self.post(self._create_uri, json_object=json_object, headers=headers)
+        return self.post(self._create_uri, json_object=json_object, headers=self.headers)
 
     @allure.step('更新部门')
     def update(self, id, name=None, parentid=None, order=None):
-        headers = {
-            'Content-Type': 'application/json; charset=utf-8'
-        }
-
         json_object = {
             'id': id,
             'name': name,
             'parentid': parentid,
             'order': order
         }
-        return self.post(self._update_uri, json_object=json_object, headers=headers)
+        return self.post(self._update_uri, json_object=json_object, headers=self.headers)
 
     @allure.step('获取部门列表')
     def search_list(self, depart_id=None):

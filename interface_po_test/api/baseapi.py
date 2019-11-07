@@ -10,6 +10,10 @@ class BaseApi:
 
     _get_token_path = '/cgi-bin/gettoken'
 
+    headers = {
+        'Content-Type': 'application/json; charset=utf-8'
+    }
+
     @allure.step('获取token')
     def get_access_token(self):
         url = self._base_url + self._get_token_path

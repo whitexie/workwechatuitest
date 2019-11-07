@@ -1,8 +1,9 @@
-import allure
-from interface_po_test.api.department import Department
-
 import random
 import time
+
+import allure
+
+from interface_po_test.api.department import Department
 
 
 @allure.feature('部门管理')
@@ -37,6 +38,5 @@ class TestDepartment:
         department = self.depart.search_list()['department'][1]
         id = department['id']
         name = department['name']
-        assert self.depart.update(id, name=name+'1')['errcode'] == 0
-        assert self.depart.search_list(id)['department'][0]['name'] == name+'1'
-
+        assert self.depart.update(id, name=name + '1')['errcode'] == 0
+        assert self.depart.search_list(id)['department'][0]['name'] == name + '1'
