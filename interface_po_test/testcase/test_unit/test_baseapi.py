@@ -5,4 +5,4 @@ class TestBaseApi:
     api = BaseApi()
 
     def test_get_token(self):
-        assert self.api.get_token() is not None
+        assert self.api.get_access_token() is not None
