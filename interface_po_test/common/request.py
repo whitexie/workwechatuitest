@@ -7,11 +7,11 @@ class Request:
 
     @classmethod
     def request(cls, method, url, **kwargs):
-        proxies = {
-            "http": "http://127.0.0.1:8888",
-            "https": "http://127.0.0.1:8888",
-        }
-        rep = requests.request(method, url, proxies=proxies, verify=False, **kwargs)
+        # proxies = {
+        #     "http": "http://127.0.0.1:8888",
+        #     "https": "http://127.0.0.1:8888",
+        # }
+        rep = requests.request(method, url, verify=False, **kwargs)
         Utils.print_http(rep)   # 输出allure报告
         return rep
 
