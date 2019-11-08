@@ -21,7 +21,7 @@ class TestDepartment:
     def test_create(self):
         name = '子部门%d%d' % (int(time.time()), random.randint(10000, 99999))
         r = self.depart.create(name)
-        assert r['errmsg'] == 'ok'
+        assert r['errmsg'] == 'created'
 
         depart_id = r['id']
         result = self.depart.search_list(depart_id)
