@@ -11,6 +11,7 @@ class TestDepartment:
     depart = Department()
 
     @allure.title('获取部门列表')
+    @allure.severity(allure.severity_level.BLOCKER)
     def test_search_list(self):
         r = self.depart.search_list()
 
@@ -18,6 +19,7 @@ class TestDepartment:
         assert len(r['department']) > 0
 
     @allure.title('创建部门')
+    @allure.severity(allure.severity_level.BLOCKER)
     def test_create(self):
         name = '子部门%d%d' % (int(time.time()), random.randint(10000, 99999))
         r = self.depart.create(name)
@@ -30,6 +32,7 @@ class TestDepartment:
         assert result['department'][0]['name'] == name
 
     @allure.title('删除部门')
+    @allure.severity(allure.severity_level.BLOCKER)
     def test_delete(self):
         name = '子部门%d%d' % (int(time.time()), random.randint(10000, 99999))
         r = self.depart.create(name)
@@ -37,6 +40,7 @@ class TestDepartment:
         assert self.depart.delete(depart_id)['errcode'] == 0
 
     @allure.title('更新部门')
+    @allure.severity(allure.severity_level.BLOCKER)
     def test_update(self):
         department = self.depart.search_list()['department'][1]
         id = department['id']
