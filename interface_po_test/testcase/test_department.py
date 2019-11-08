@@ -37,6 +37,6 @@ class TestDepartment:
     def test_update(self):
         department = self.depart.search_list()['department'][1]
         id = department['id']
-        name = department['name']
-        assert self.depart.update(id, name=name + '1')['errcode'] == 0
-        assert self.depart.search_list(id)['department'][0]['name'] == name + '1'
+        name = '子部门%d%d' % (int(time.time()), random.randint(10000, 99999))
+        assert self.depart.update(id, name=name)['errcode'] == 0
+        assert self.depart.search_list(id)['department'][0]['name'] == name
