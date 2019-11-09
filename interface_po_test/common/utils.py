@@ -1,5 +1,6 @@
 import json
-
+import time
+import random
 import allure
 from requests.structures import CaseInsensitiveDict
 
@@ -28,3 +29,11 @@ class Utils:
         allure.attach(cls.format_json(rep.headers), 'rep_hreaders', allure.attachment_type.JSON)
         if rep.headers['Content-Type'].find('json'):
             allure.attach(cls.format_json(rep.json()), 'rep_body', allure.attachment_type.JSON)
+
+    @classmethod
+    def build_user(cls):
+        return 'test_' + str(random.randint(1000, 9999))
+
+
+if __name__ == '__main__':
+    print(Utils.build_user())
