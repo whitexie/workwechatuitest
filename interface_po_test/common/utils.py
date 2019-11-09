@@ -32,6 +32,10 @@ class Utils:
 
     @classmethod
     def build_user(cls):
+        """
+        返回一个9位数的字符串
+        :return:
+        """
         return 'test_' + str(random.randint(1000, 9999))
 
 
