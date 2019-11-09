@@ -38,6 +38,17 @@ class Utils:
         """
         return 'test_' + str(random.randint(1000, 9999))
 
+    @classmethod
+    def build_phone_number(cls):
+        """
+        返回一个11位的手机号
+        :return:
+        """
+        area = '153'
+        number = random.randint(10000000, 99999999)
+        return area + str(number)
+
 
 if __name__ == '__main__':
     print(Utils.build_user())
+    print(Utils.build_phone_number().__len__())

@@ -13,4 +13,4 @@ class Contacts(BaseApi):
         }
         if kwargs:
             user_dict.update(kwargs)
-        self.post(self._create_uri, headers=self.headers, json_object=user_dict)
+        return self.post(self._create_uri, headers=self.headers, json_object=user_dict)
